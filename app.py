@@ -111,7 +111,14 @@ if uploaded_file is None:
     st.info("Upload a CSV file from the sidebar to evaluate the selected model.")
     st.stop()
 
-df = pd.read_csv(uploaded_file)
+# df = pd.read_csv(uploaded_file)
+import io
+
+def read_uploaded_csv(uploaded_file):
+    file_bytes = uploaded_file.getvalue()
+    if file_bytes is None or len(file_bytes) == 0:
+        raise ValueError("Uploaded CSV is empty. Please upload a valid test.csv file.")
+    return pd.read_csv(io.BytesIO(file_bytes))
 
 st.subheader("Uploaded Data Preview")
 st.dataframe(df.head(10), use_container_width=True)
