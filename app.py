@@ -50,7 +50,6 @@ def get_binary_proba(model, X):
 
 # uploaded_file = st.sidebar.file_uploader("Upload TEST CSV (recommended)", type=["csv"])
 ###
-
 import os
 import streamlit as st
 import pandas as pd
@@ -72,6 +71,7 @@ if st.sidebar.button("Use default test.csv from GitHub"):
 # If user uploads a file, prefer the upload and turn off default
 if uploaded_file is not None:
     st.session_state.use_default = False
+model_name = st.sidebar.selectbox("Select Model", list(MODEL_FILES.keys()))
 
 # Decide which data to load
 if uploaded_file is not None:
@@ -87,7 +87,7 @@ else:
     st.warning("Upload a test CSV or click 'Use default test.csv from GitHub'.")
     st.stop()
 
-model_name = st.sidebar.selectbox("Select Model", list(MODEL_FILES.keys()))
+# model_name = st.sidebar.selectbox("Select Model", list(MODEL_FILES.keys()))
 # Load model
 model_path = MODEL_FILES[model_name]
 if not os.path.exists(model_path):
