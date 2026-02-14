@@ -143,8 +143,19 @@ if y_test is not None:
     # Confusion Matrix + Classification Report
     st.subheader("Confusion Matrix")
     cm = confusion_matrix(y_test, y_pred)
-    st.write(pd.DataFrame(cm, index=["Actual 0", "Actual 1"], columns=["Pred 0", "Pred 1"]))
+    # st.write(pd.DataFrame(cm, index=["Actual 0", "Actual 1"], columns=["Pred 0", "Pred 1"]))
+    cm_df = pd.DataFrame(
+    cm,
+    index=["Actual: No Default", "Actual: Default"],
+    columns=["Predicted: No Default", "Predicted: Default"]
+    )
 
+    fig, ax = plt.subplots()
+    sns.heatmap(cm_df, annot=True, fmt="d", cmap="Blues", ax=ax)
+
+    ax.set_title("Confusion Matrix")
+    st.pyplot(fig)
+    #change ends here
     st.subheader("Classification Report")
     st.text(classification_report(y_test, y_pred, digits=4, zero_division=0))
 
