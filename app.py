@@ -46,11 +46,48 @@ def get_binary_proba(model, X):
 # -----------------------------
 # Sidebar controls
 # -----------------------------
-st.sidebar.header("Controls")
+#### st.sidebar.header("Controls")
 
 uploaded_file = st.sidebar.file_uploader("Upload TEST CSV (recommended)", type=["csv"])
-model_name = st.sidebar.selectbox("Select Model", list(MODEL_FILES.keys()))
+###
 
+import os
+import streamlit as st
+import pandas as pd
+
+DEFAULT_TEST_PATH = "model/data/test.csv"
+
+st.sidebar.subheader("Test Data Source")
+
+uploaded_file = st.sidebar.file_uploader("Upload TEST CSV (optional)", type=["csv"])
+
+# Initialize state
+if "use_default" not in st.session_state:
+    st.session_state.use_default = False
+
+# Button to use default
+if st.sidebar.button("Use default test.csv from GitHub"):
+    st.session_state.use_default = True
+
+# If user uploads a file, prefer the upload and turn off default
+if uploaded_file is not None:
+    st.session_state.use_default = False
+
+# Decide which data to load
+if uploaded_file is not None:
+    df = pd.read_csv(uploaded_file)
+    st.success("Using uploaded test CSV.")
+elif st.session_state.use_default:
+    if not os.path.exists(DEFAULT_TEST_PATH):
+        st.error(f"Default test file not found at: {DEFAULT_TEST_PATH}")
+        st.stop()
+    df = pd.read_csv(DEFAULT_TEST_PATH)
+    st.info("Using default test.csv from repository.")
+else:
+    st.warning("Upload a test CSV or click 'Use default test.csv from GitHub'.")
+    st.stop()
+
+model_name = st.sidebar.selectbox("Select Model", list(MODEL_FILES.keys()))
 # Load model
 model_path = MODEL_FILES[model_name]
 if not os.path.exists(model_path):
