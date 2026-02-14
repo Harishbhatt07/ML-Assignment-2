@@ -83,7 +83,7 @@ The following evaluation metrics were calculated for each model:
 | Decision Tree | 0.7145 | 0.6075 | 0.3694 | 0.4115 | 0.3893 | 0.2042 |
 | KNN | 0.7928 | 0.7014 | 0.5487 | 0.3564 | 0.4322 | 0.3233 |
 | Naive Bayes | 0.7525 | 0.7249 | 0.4515 | 0.5539 | 0.4975 | 0.3386 |
-| Random Forest (Ensemble) | 0.8135 | 0.7548 | 0.6368 | 0.3647 | 0.4638 | 0.3814 |
+| Random Forest (Ensemble) | 0.8168 | 0.7741 | 0.6597 | 0.3549 | 0.4615 | 0.3883 |
 | XGBoost (Ensemble) | **0.8167** | **0.7774** | 0.6553 | 0.3610 | 0.4655 | **0.3896** |
 
 ---
@@ -106,3 +106,4 @@ The following evaluation metrics were calculated for each model:
 Based on the comparison of evaluation metrics, **XGBoost** is selected as the best-performing model due to its superior AUC and MCC scores, indicating better overall classification quality and balanced performance on imbalanced data.
 
 ---
+
