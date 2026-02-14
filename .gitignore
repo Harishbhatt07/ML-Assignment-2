@@ -1,0 +1,4 @@
+
+# Model artifacts (do not commit)
+*.pkl
+model/**/*.pkl
