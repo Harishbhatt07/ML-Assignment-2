@@ -146,7 +146,6 @@ if y_test is not None:
 
     cm_df = pd.DataFrame(cm, index=["Actual: No Default", "Actual: Default"], columns=["Predicted: No Default", "Predicted: Default"])
     st.dataframe(cm_df, use_container_width=True)
-    st.subheader("Classification Report")
     # st.text(classification_report(y_test, y_pred, digits=4, zero_division=0))
     from sklearn.metrics import classification_report
     report_dict = classification_report(y_test, y_pred, digits=4, zero_division=0, output_dict=True)
