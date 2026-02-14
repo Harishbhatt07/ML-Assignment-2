@@ -107,9 +107,9 @@ if model_name in SCALED_MODELS:
 # -----------------------------
 # Main logic
 # -----------------------------
-if uploaded_file is None:
+"""if uploaded_file is None:
     st.info("Upload a CSV file from the sidebar to evaluate the selected model.")
-    st.stop()
+    st.stop() """
 
 # df = pd.read_csv(uploaded_file)
 import io
