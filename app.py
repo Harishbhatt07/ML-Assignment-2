@@ -48,7 +48,7 @@ def get_binary_proba(model, X):
 # -----------------------------
 #### st.sidebar.header("Controls")
 
-uploaded_file = st.sidebar.file_uploader("Upload TEST CSV (recommended)", type=["csv"])
+# uploaded_file = st.sidebar.file_uploader("Upload TEST CSV (recommended)", type=["csv"])
 ###
 
 import os
